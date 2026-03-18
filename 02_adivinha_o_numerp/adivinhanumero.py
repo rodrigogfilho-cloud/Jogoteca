@@ -65,7 +65,7 @@ elif dificuldade == 4:
     else:
         print(f"Você está errado! meu número não era {numero4}, era {numero_aleatorio4}")
 elif dificuldade == 67:
-    print("""UOUUUUU! NÍVEL EXPERT ESPICIAL MASTER BLASTER AURAAAA. Responda a pergunta à baixo.
+    print("""UOUUUUUUUU VOCÊ DESCOBRIU O NÍVEL EXPERT MASTER ESPECIAL SUPER ULTRA BLASTER AURUDO AURA. Responda a pergunta à baixo.
           """)
     print(f"DICA: É O NÚMERO MAIS AURA DO MUNDO!!!")
     numero67 = int(input("Chute um número: "))
