@@ -1,3 +1,4 @@
+
 nome = input ("Digite um nome:")
 verbo = input("Digite um verbo:")
 objeto = input("Digite um objeto:")
