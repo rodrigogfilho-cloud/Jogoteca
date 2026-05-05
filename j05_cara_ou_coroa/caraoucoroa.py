@@ -4,9 +4,9 @@ def caracoroa():
 
     computador = random.choice(["CARA","COROA"])
 
-    jogada = input("""
+    jogada = input("""\033[34m
                 
-        _________    ____  ___       ____  __  __   __________  ____  ____  ___ 
+     _________    ____  ___       ____  __  __   __________  ____  ____  ___ 
     / ____/   |  / __ \/   |     / __ \/ / / /  / ____/ __ \/ __ \/ __ \/   |
     / /   / /| | / /_/ / /| |    / / / / / / /  / /   / / / / /_/ / / / / /| |
     / /___/ ___ |/ _, _/ ___ |   / /_/ / /_/ /  / /___/ /_/ / _, _/ /_/ / ___ |
@@ -16,7 +16,7 @@ def caracoroa():
                 - Cara
                 - Coroa  
                 
-                    Faça a sua jogada: """).upper()
+                    Faça a sua jogada: \033[m""").upper()
 
     if jogada == "CARA" and computador == "CARA":
         print(f"Caiu {jogada} seu lindo")
