@@ -7,7 +7,6 @@ def adivinhanumero():
     numero_aleatorio4 = random.randrange(201)
     numero_aleatorio67 = random.randrange(67, 68)
 
-
     dificuldade = int(input("""
                         
                                                                                                             

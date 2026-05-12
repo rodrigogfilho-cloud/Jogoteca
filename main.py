@@ -1,4 +1,4 @@
-
+import os
 from j01_mad_libs.mad_libs import madlib
 from j02_adivinha_o_numerp.adivinhanumero import adivinhanumero
 from j03_calculadora.calculadoravezes import calculadora
@@ -6,6 +6,12 @@ from j04_Impar_e_par.Impar_par import imparpar
 from j05_cara_ou_coroa.caraoucoroa import caracoroa
 from j06_dragao_shrek_burro.dragao_shrek_burro import shrek
 from j07_maior_ou_menor.maior_menor import maiormenor
+from j08_genius.genius import geniusus
+
+def reset ():
+    os.system("color 07")
+    os.system("cls")
+
 print("""\033[31m
           
  ▄▄▄██▀▀▀▒█████    ▄████  ▒█████  ▄▄▄█████▓▓█████  ▄████▄   ▄▄▄      
@@ -32,29 +38,35 @@ while True:
                 \033[36m (5) - \033[33m Cara ou Coroa
                 \033[36m (6) - \033[33m Dragão, Shrek e o Burro
                 \033[36m (7) - \033[33m Adivinha Número 2.0
-        """)
+                \033[36m (8) - \033[33m Genius """)
     jogo = int(input("          Qual jogo você vai desejar jogar: " ))
 
     if jogo == 1:
-        
+        reset()
         madlib()
     elif jogo == 2:
-        
+        reset()
         adivinhanumero()
     elif jogo == 3:
-        
+        reset()
         calculadora()
     elif jogo == 4:
-        
+        reset()
         imparpar()
     elif jogo == 5:
-        
+        reset()
         caracoroa()
     elif jogo == 6:
+        reset()
         shrek()
     elif jogo == 7:
+        reset()
         maiormenor()
+    elif jogo ==8:
+        reset()
+        geniusus()
     elif jogo == 0:
+        reset()
         print ("Até já...")
         break
 
