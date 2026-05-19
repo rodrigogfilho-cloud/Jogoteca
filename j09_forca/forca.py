@@ -15,7 +15,7 @@ def escolher_palavra () -> str:
                       "BONITO",
                       "LEGAL",
                       "SESI"]
-    palavra_aleatoria = random.choice(lista_palavras)
+    palavra_aleatoria = random.choice(lista_palavras).upper()
     #retorna a palavra para quem chamou a função
     return palavra_aleatoria
     
@@ -24,83 +24,85 @@ def desenhar_forca (erro:int):
     reset()
     if erro == 0 :
         print("""
-    __________
-   |         !
-   |
-   |
-   |
-   |
-   |    
+__________
+|         !
+|
+|
+|
+|
+|    
 """)
     
     elif erro == 1:
         print("""
-    __________
-   |         !
-   |       (x x)
-   |
-   |
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|
+|
+|
+|    
 """)
        
     elif erro == 2:
         print("""
-    __________
-   |         !
-   |       (x x)
-   |         |
-   |
-   |
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|         |
+|
+|
+|
+|    
 """)
       
     elif erro == 3:
         print("""
-    __________
-   |         !
-   |       (x x)
-   |         |-
-   |
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|         |-
+|
+|
+|    
 """)
        
     elif erro == 4:
         print("""
-    __________
-   |         !
-   |       (x x)
-   |        -|-
-   |
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|        -|-
+|
+|
+|    
 """)
         
     elif erro == 5:
         print(r"""
-    __________
-   |         !
-   |       (x x)
-   |        -|-
-   |          \
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|        -|-
+|          \
+|
+|    
 """)
         
     elif erro == 6:
         print(r"""
-    __________
-   |         !
-   |       (x x)
-   |        -|-
-   |        / \
-   |
-   |    
+ __________
+|         !
+|       (x x)
+|        -|-
+|        / \
+|
+|    
 """)
+
+
       
-        print("VOCÊ PERDEU !!!")
+        
 
 #desenhar_forca(1)
 #reset()
@@ -119,17 +121,19 @@ def gerar_tracos (palavra:str)->list:
 """print(*lista_tracos)"""
 
 def perguntar_letra () -> str:
-    resposta = input("Digite uma letra: ").upper()
+    resposta = input("""
+                     Digite uma letra: """).upper()
     while len(resposta) != 1:
-        resposta = input("Eu disse UMA letra: ").upper()
+        resposta = input("""
+                     Eu disse UMA letra: """).upper()
     return resposta
 """ letra = perguntar_letra()
     print(letra)"""
 
 def jogar_forca():
     #Tela inicial
-
-    print("""
+    reset()
+    print("""\033[35m
          ██  ██████   ██████   ██████      
          ██ ██    ██ ██       ██    ██     
          ██ ██    ██ ██   ███ ██    ██     
@@ -140,9 +144,85 @@ def jogar_forca():
    ██      ██    ██ ██   ██ ██      ██   ██ 
    █████   ██    ██ ██████  ██      ███████ 
    ██      ██    ██ ██   ██ ██      ██   ██ 
-   ██       ██████  ██   ██  ██████ ██   ██ 
+   ██       ██████  ██   ██  ██████ ██   ██ \033[m
 
-           Bem-vindo ao jogo""")
+           \033[1;4;38mBem-vindo ao jogo\033[m
+          
+          """)
+    
+    time.sleep(1)
+    input("Pressione ENTER para me vender sua alma ...")
+    erro = 0
+    #escolher palavra
+    palavra_escolhida = escolher_palavra()
+    tracos = gerar_tracos(palavra_escolhida)
+    tentativas = []
 
+    while True:
+        reset()
+        #desenhar forca
+        desenhar_forca(erro)
+        #gerar os traços (tracos)
+        print(*tracos)
+        print("Tentativas: ", *tentativas)
+
+        if "_" not in tracos:
+            print("Dessa vez você se livrou... mas na próxima eu te pego 👿")
+            break
+        #perguntar letra
+        letra_escolhida = perguntar_letra()
+        
+        if letra_escolhida not in palavra_escolhida:
+            erro += 1
+            tentativas.append(letra_escolhida)
+            if erro == 7:
+                reset()
+                print(r"""
+                           ,--.
+                          {    }
+                          K,   }
+                         /  `Y`
+                    _   /   /
+                   {_'-K.__/
+                     `/-.__L._
+                     /  ' /`\_}
+                    /  ' /     
+            ____   /  ' /
+     ,-'~~~~    ~~/  ' /_
+   ,'             ``~~~%%',
+  (                     %  Y
+ {                      %% I
+{      -                 %  `.
+|       ',                %  )
+|        |   ,..__      __. Y
+|    .,_./  Y ' / ^Y   J   )|
+\           |' /   |   |   ||
+ \          L_/    . _ (_,.'(
+  \,   ,      ^^""' / |      )
+    \_  \          /,L]     /
+      '-_`-,       ` `   ./`
+         `-(_            )
+             ^^\..___,.--`
+""")
+                print("""
+                  
+Agora sua alma me pertence !!!
+        \033[1;4;38mHAHAHAHAHA\033[m
+                  
+                  """)
+                print(f"""  
+    A palavra era \033[1;4;38m{palavra_escolhida}
+
+""")
+                break
+        if letra_escolhida in palavra_escolhida:
+            indice = 0
+            for letra in palavra_escolhida:
+                if letra == letra_escolhida:
+                    tracos [indice] = letra_escolhida
+                indice += 1
+                       
+                
+#JOGO
 if __name__ == "__main__":
     jogar_forca()
